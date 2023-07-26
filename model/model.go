@@ -130,10 +130,10 @@ func (o *StringObject) GetType() string {
 func (o *StringObject) MarshalJSON() ([]byte, error) {
 	o2 := struct {
 		*BaseObject
-		Value string `json:"value"`
+		Value []byte `json:"value"`
 	}{
 		BaseObject: o.BaseObject,
-		Value:      string(o.Value),
+		Value:      o.Value,
 	}
 	return json.Marshal(o2)
 }
@@ -156,13 +156,13 @@ func (o *ListObject) GetElemCount() int {
 
 // MarshalJSON marshal []byte as string
 func (o *ListObject) MarshalJSON() ([]byte, error) {
-	values := make([]string, len(o.Values))
+	values := make([][]byte, len(o.Values))
 	for i, v := range o.Values {
-		values[i] = string(v)
+		values[i] = v
 	}
 	o2 := struct {
 		*BaseObject
-		Values []string `json:"values"`
+		Values [][]byte `json:"values"`
 	}{
 		BaseObject: o.BaseObject,
 		Values:     values,
@@ -188,13 +188,13 @@ func (o *HashObject) GetElemCount() int {
 
 // MarshalJSON marshal []byte as string
 func (o *HashObject) MarshalJSON() ([]byte, error) {
-	m := make(map[string]string)
+	m := make(map[string][]byte)
 	for k, v := range o.Hash {
-		m[k] = string(v)
+		m[k] = v
 	}
 	o2 := struct {
 		*BaseObject
-		Hash map[string]string `json:"hash"`
+		Hash map[string][]byte `json:"hash"`
 	}{
 		BaseObject: o.BaseObject,
 		Hash:       m,
@@ -220,13 +220,13 @@ func (o *SetObject) GetElemCount() int {
 
 // MarshalJSON marshal []byte as string
 func (o *SetObject) MarshalJSON() ([]byte, error) {
-	values := make([]string, len(o.Members))
+	values := make([][]byte, len(o.Members))
 	for i, v := range o.Members {
-		values[i] = string(v)
+		values[i] = v
 	}
 	o2 := struct {
 		*BaseObject
-		Members []string `json:"members"`
+		Members [][]byte `json:"members"`
 	}{
 		BaseObject: o.BaseObject,
 		Members:    values,
@@ -273,7 +273,7 @@ func (o *AuxObject) MarshalJSON() ([]byte, error) {
 		if http.DetectContentType(v) == "text/plain; charset=utf-8" {
 			return string(v)
 		} else {
-			return base64.URLEncoding.EncodeToString(v)
+			return base64.StdEncoding.EncodeToString(v)
 		}
 	}
 
