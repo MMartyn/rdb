@@ -1,4 +1,4 @@
-module github.com/hdt3213/rdb
+module github.com/mmartyn/rdb
 
 go 1.16
 

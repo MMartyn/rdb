@@ -1,12 +1,12 @@
 ![license](https://img.shields.io/github/license/HDT3213/rdb)
 [![Build Status](https://travis-ci.com/HDT3213/rdb.svg?branch=master)](https://app.travis-ci.com/github/HDT3213/rdb)
 [![Coverage Status](https://coveralls.io/repos/github/HDT3213/rdb/badge.svg?branch=master)](https://coveralls.io/github/HDT3213/rdb?branch=master)
-[![Go Report Card](https://goreportcard.com/badge/github.com/HDT3213/rdb)](https://goreportcard.com/report/github.com/HDT3213/rdb)
-[![Go Reference](https://pkg.go.dev/badge/github.com/hdt3213/rdb.svg)](https://pkg.go.dev/github.com/hdt3213/rdb)
+[![Go Report Card](https://goreportcard.com/badge/github.com/mmartyn/rdb)](https://goreportcard.com/report/github.com/mmartyn/rdb)
+[![Go Reference](https://pkg.go.dev/badge/github.com/mmartyn/rdb.svg)](https://pkg.go.dev/github.com/mmartyn/rdb)
 <br>
 [![Mentioned in Awesome Go](https://awesome.re/mentioned-badge-flat.svg)](https://github.com/avelino/awesome-go)
 
-[English](https://github.com/HDT3213/rdb/blob/master/README.md)
+[English](https://github.com/mmartyn/rdb/blob/master/README.md)
 
 这是一个可以用于二次开发和内存分析的 RDB 文件分析工具，它具备下列能力：
 - 为 RDB 文件生成内存用量报告
@@ -26,10 +26,10 @@
 如果您的电脑上安装 go 语言运行环境，可以使用 go get 安装本工具:
 
 ```bash
-go install github.com/hdt3213/rdb@latest
+go install github.com/mmartyn/rdb@latest
 ```
 
-或者您可以在 [releases](https://github.com/HDT3213/rdb/releases) 页面下载可执行文件，然后将它放入 PATH 变量中的目录内。
+或者您可以在 [releases](https://github.com/mmartyn/rdb/releases) 页面下载可执行文件，然后将它放入 PATH 变量中的目录内。
 
 在终端中输入 rdb 命令即可获得本工具的使用手册：
 
@@ -74,7 +74,7 @@ rdb -c json -o <output_path> <source_path>
 rdb -c json -o intset_16.json cases/intset_16.rdb
 ```
 
-本仓库的 [cases](https://github.com/HDT3213/rdb/tree/master/cases) 目录中准备了一些示例 RDB 文件，可供您进行测试。
+本仓库的 [cases](https://github.com/mmartyn/rdb/tree/master/cases) 目录中准备了一些示例 RDB 文件，可供您进行测试。
 
 转换出的 JSON 结果示例：
 
@@ -213,7 +213,7 @@ rdb -c json -o regex.json -regex '^l.*' cases/memory.rdb
 package main
 
 import (
-	"github.com/hdt3213/rdb/parser"
+	"github.com/mmartyn/rdb/parser"
 	"os"
 )
 
@@ -258,8 +258,8 @@ func main() {
 package main
 
 import (
-	"github.com/hdt3213/rdb/encoder"
-	"github.com/hdt3213/rdb/model"
+	"github.com/mmartyn/rdb/encoder"
+	"github.com/mmartyn/rdb/model"
 	"os"
 	"time"
 )

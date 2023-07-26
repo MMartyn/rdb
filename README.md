@@ -1,12 +1,12 @@
 ![license](https://img.shields.io/github/license/HDT3213/rdb)
 [![Build Status](https://travis-ci.com/HDT3213/rdb.svg?branch=master)](https://app.travis-ci.com/github/HDT3213/rdb)
 [![Coverage Status](https://coveralls.io/repos/github/HDT3213/rdb/badge.svg?branch=master)](https://coveralls.io/github/HDT3213/rdb?branch=master)
-[![Go Report Card](https://goreportcard.com/badge/github.com/HDT3213/rdb)](https://goreportcard.com/report/github.com/HDT3213/rdb)
-[![Go Reference](https://pkg.go.dev/badge/github.com/hdt3213/rdb.svg)](https://pkg.go.dev/github.com/hdt3213/rdb)
+[![Go Report Card](https://goreportcard.com/badge/github.com/mmartyn/rdb)](https://goreportcard.com/report/github.com/mmartyn/rdb)
+[![Go Reference](https://pkg.go.dev/badge/github.com/mmartyn/rdb.svg)](https://pkg.go.dev/github.com/mmartyn/rdb)
 <br>
 [![Mentioned in Awesome Go](https://awesome.re/mentioned-badge-flat.svg)](https://github.com/avelino/awesome-go)
 
-[中文版](https://github.com/HDT3213/rdb/blob/master/README_CN.md)
+[中文版](https://github.com/mmartyn/rdb/blob/master/README_CN.md)
 
 This is a golang implemented Redis RDB parser for secondary development and memory analysis.
 
@@ -31,7 +31,7 @@ Thanks sripathikrishnan for his [redis-rdb-tools](https://github.com/sripathikri
 If you have installed `go` on your compute, just simply use:
 
 ```
-go install github.com/hdt3213/rdb@latest
+go install github.com/mmartyn/rdb@latest
 ```
 
 ### Package Managers
@@ -42,7 +42,7 @@ If you're a [Homebrew](https://brew.sh/) user, you can install [rdb](https://for
 $ brew install rdb
 ```
 
-Or, you can download executable binary file from [releases](https://github.com/HDT3213/rdb/releases) and put its path to
+Or, you can download executable binary file from [releases](https://github.com/mmartyn/rdb/releases) and put its path to
 PATH environment.
 
 use `rdb` command in terminal, you can see it's manual
@@ -87,7 +87,7 @@ example:
 rdb -c json -o intset_16.json cases/intset_16.rdb
 ```
 
-You can get some rdb examples in [cases](https://github.com/HDT3213/rdb/tree/master/cases)
+You can get some rdb examples in [cases](https://github.com/mmartyn/rdb/tree/master/cases)
 
 The examples for json result:
 
@@ -220,7 +220,7 @@ rdb -c json -o regex.json -regex '^l.*' cases/memory.rdb
 package main
 
 import (
-	"github.com/hdt3213/rdb/parser"
+	"github.com/mmartyn/rdb/parser"
 	"os"
 )
 
@@ -265,8 +265,8 @@ This library can generate RDB file:
 package main
 
 import (
-	"github.com/hdt3213/rdb/encoder"
-	"github.com/hdt3213/rdb/model"
+	"github.com/mmartyn/rdb/encoder"
+	"github.com/mmartyn/rdb/model"
 	"os"
 	"time"
 )

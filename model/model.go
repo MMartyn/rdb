@@ -2,7 +2,9 @@ package model
 
 import (
 	"encoding/json"
+	"encoding/base64"
 	"time"
+	"net/http"
 )
 
 const (
@@ -257,7 +259,7 @@ func (o *ZSetObject) GetElemCount() int {
 // AuxObject stores redis metadata
 type AuxObject struct {
 	*BaseObject
-	Value string
+	Value []byte
 }
 
 // GetType returns redis object type
@@ -267,12 +269,20 @@ func (o *AuxObject) GetType() string {
 
 // MarshalJSON marshal []byte as string
 func (o *AuxObject) MarshalJSON() ([]byte, error) {
+	encoder := func (v []byte) string {
+		if http.DetectContentType(v) == "text/plain; charset=utf-8" {
+			return string(v)
+		} else {
+			return base64.URLEncoding.EncodeToString(v)
+		}
+	}
+
 	o2 := struct {
 		*BaseObject
 		Value string `json:"value"`
 	}{
 		BaseObject: o.BaseObject,
-		Value:      string(o.Value),
+		Value:      encoder(o.Value),
 	}
 	return json.Marshal(o2)
 }

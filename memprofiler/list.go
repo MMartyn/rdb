@@ -1,7 +1,7 @@
 package memprofiler
 
 import (
-	"github.com/hdt3213/rdb/model"
+	"github.com/mmartyn/rdb/model"
 	"math"
 	"strconv"
 )

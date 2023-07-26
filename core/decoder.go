@@ -7,8 +7,8 @@ import (
 	"encoding/binary"
 	"errors"
 	"fmt"
-	"github.com/hdt3213/rdb/memprofiler"
-	"github.com/hdt3213/rdb/model"
+	"github.com/mmartyn/rdb/memprofiler"
+	"github.com/mmartyn/rdb/model"
 	"io"
 	"strconv"
 	"time"
@@ -362,7 +362,7 @@ func (dec *Decoder) parse(cb func(object model.RedisObject) bool) error {
 					BaseObject: &model.BaseObject{},
 				}
 				obj.Key = unsafeBytes2Str(key)
-				obj.Value = unsafeBytes2Str(value)
+				obj.Value = value
 				tbc := cb(obj)
 				if !tbc {
 					break
